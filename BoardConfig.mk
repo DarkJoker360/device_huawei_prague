@@ -27,6 +27,9 @@
 
 DEVICE_PATH := device/huawei/prague
 
+# 64 Bit
+TARGET_USES_64_BIT_BINDER := true
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := prague,hi6250
 
