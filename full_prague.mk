@@ -34,3 +34,7 @@ PRODUCT_DEVICE := prague
 PRODUCT_NAME := full_prague
 PRODUCT_BRAND := Huawei
 PRODUCT_MODEL := prague
+
+# GMS
+PRODUCT_GMS_CLIENTID_BASE := android-huawei
+
