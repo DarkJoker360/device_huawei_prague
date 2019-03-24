@@ -69,6 +69,7 @@ PRODUCT_PACKAGES += \
 
 # Hardware Overlays
 PRODUCT_PACKAGES += \
+    TrebleApp \
     treble-overlay-huawei \
     treble-overlay-huawei-ANE \
     treble-overlay-huawei-BND \
@@ -76,6 +77,9 @@ PRODUCT_PACKAGES += \
     treble-overlay-huawei-PRA \
     treble-overlay-huawei-RNE \
     treble-overlay-huawei-WAS \
+    treble-overlay-NavBar \
+    treble-overlay-NightMode \
+    treble-overlay-SystemUI-FalseLocks \
 
 # NFC
 PRODUCT_PACKAGES += \
