@@ -67,6 +67,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vr_hwc
 
+# Hardware Overlays
+PRODUCT_PACKAGES += \
+    treble-overlay-huawei \
+    treble-overlay-huawei-ANE \
+    treble-overlay-huawei-BND \
+    treble-overlay-huawei-LLD \
+    treble-overlay-huawei-PRA \
+    treble-overlay-huawei-RNE \
+    treble-overlay-huawei-WAS \
+
 # NFC
 PRODUCT_PACKAGES += \
     NfcNci \
