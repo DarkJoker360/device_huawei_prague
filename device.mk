@@ -42,6 +42,8 @@ PRODUCT_COPY_FILES += \
     device/generic/goldfish/data/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 # Audio
+USE_XML_AUDIO_POLICY_CONF := 1
+
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_configuration_generic.xml:system/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:system/etc/audio_policy_volumes.xml \
