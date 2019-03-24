@@ -29,3 +29,9 @@ DEVICE_PATH := device/huawei/prague
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := prague,hi6250
+
+# Treble
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+
+# VNDK
+PRODUCT_EXTRA_VNDK_VERSIONS := 27

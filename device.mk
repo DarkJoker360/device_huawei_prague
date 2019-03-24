@@ -25,10 +25,29 @@
 
 $(call inherit-product-if-exists, vendor/huawei/prague/prague-vendor.mk)
 
+# Android Open Source Project Common Stuff
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+
+PRODUCT_PACKAGES += \
+    messaging
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
+
+# APN
+PRODUCT_COPY_FILES += \
+    device/generic/goldfish/data/etc/apns-conf.xml:system/etc/apns-conf.xml
+
+# Audio
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/audio_policy_configuration_generic.xml:system/etc/audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:system/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/primary_audio_policy_configuration.xml:system/etc/primary_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
 
 # Device
 $(call inherit-product, device/huawei/hi6250-common/device.mk)
@@ -41,6 +60,10 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_COPY_FILES += \
     device/huawei/prague/rootdir/system/etc/gps.conf:system/etc/gps.conf \
     device/huawei/prague/rootdir/system/etc/gps_debug.conf:system/etc/gps_debug.conf \
+
+# Graphics
+PRODUCT_PACKAGES += \
+    vr_hwc
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -64,3 +87,11 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
+
+# VNDK
+PRODUCT_PACKAGES += \
+    ld.config.vndk_lite.txt
+
+PRODUCT_COPY_FILES += \
+    build/make/target/product/vndk/init.gsi.rc:system/etc/init/init.gsi.rc \
+    build/make/target/product/vndk/init.vndk-27.rc:system/etc/init/gsi/init.vndk-27.rc
