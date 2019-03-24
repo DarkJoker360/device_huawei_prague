@@ -37,6 +37,25 @@ $(call inherit-product, device/huawei/hi6250-common/device.mk)
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
+# NFC
+PRODUCT_PACKAGES += \
+    NfcNci \
+    Tag \
+    com.android.nfc_extras \
+    nfc_nci.pn54x.default
+
+PRODUCT_COPY_FILES += \
+    device/huawei/prague/rootdir/system/etc/libnfc_brcm_pra_L31.conf:system/etc/libnfc-brcm.conf \
+    device/huawei/prague/rootdir/system/etc/libnfc-nci.conf:system/etc/libnfc-nci.conf \
+    device/huawei/prague/rootdir/system/etc/libnfc_nxp_pra_L31.conf:system/etc/libnfc-nxp.conf \
+    device/huawei/prague/rootdir/system/etc/nfcscc_access.xml:system/etc/nfcscc_access.xml \
+    device/huawei/prague/rootdir/system/etc/nfcse_access.xml:system/etc/nfcse_access.xml \
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
