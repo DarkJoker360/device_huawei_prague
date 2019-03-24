@@ -93,6 +93,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 # VNDK
 PRODUCT_PACKAGES += \
     ld.config.vndk_lite.txt \
+    vndk-sp
 
 PRODUCT_COPY_FILES += \
     build/make/target/product/vndk/init.gsi.rc:system/etc/init/init.gsi.rc \
