@@ -37,6 +37,11 @@ $(call inherit-product, device/huawei/hi6250-common/device.mk)
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
+# GPS
+PRODUCT_COPY_FILES += \
+    device/huawei/prague/rootdir/system/etc/gps.conf:system/etc/gps.conf \
+    device/huawei/prague/rootdir/system/etc/gps_debug.conf:system/etc/gps_debug.conf \
+
 # NFC
 PRODUCT_PACKAGES += \
     NfcNci \
