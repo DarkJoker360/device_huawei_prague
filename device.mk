@@ -24,6 +24,7 @@
 # components.
 
 $(call inherit-product-if-exists, vendor/huawei/prague/prague-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/hi6250-common/hi6250-common-vendor.mk)
 
 # Android Open Source Project Common Stuff
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
