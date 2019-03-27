@@ -23,46 +23,11 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
--include device/huawei/hi6250-common/BoardConfigCommon.mk
-
-DEVICE_PATH := device/huawei/prague
-
-# 64 Bit
-TARGET_USES_64_BIT_BINDER := true
-
-# Assert
-TARGET_OTA_ASSERT_DEVICE := prague,hi6250
-
-# Board
-TARGET_NO_BOOTLOADER := true
-
-# File System
-TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
-TARGET_USES_MKE2FS := true
-
-# Graphics
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-TARGET_USES_HWC2 := true
+# Android Open Source Project Common Stuff
+TARGET_AOSP_BASED := false
 
 # Partitions
-BOARD_USES_METADATA_PARTITION := true
-TARGET_COPY_OUT_VENDOR := vendor
+BOARD_AVB_ENABLE := false
 
-ifeq ($(TARGET_PRODUCT),aosp_prague)
-ifeq ($(BOARD_AVB_ENABLE),true)
-$(error BOARD_AVB_ENABLE cannot be set for Treble GSI)
-endif
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
-endif
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
 
-# Properties
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-
-# Treble
-PRODUCT_FULL_TREBLE_OVERRIDE := true
-
-# VNDK
-BOARD_VNDK_VERSION := current
-PRODUCT_EXTRA_VNDK_VERSIONS := 27

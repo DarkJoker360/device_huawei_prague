@@ -23,46 +23,20 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
--include device/huawei/hi6250-common/BoardConfigCommon.mk
-
-DEVICE_PATH := device/huawei/prague
-
-# 64 Bit
-TARGET_USES_64_BIT_BINDER := true
-
-# Assert
-TARGET_OTA_ASSERT_DEVICE := prague,hi6250
+# Android Open Source Project Common Stuff
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Board
-TARGET_NO_BOOTLOADER := true
+include device/huawei/prague/BoardConfigAOSCP.mk
 
-# File System
-TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
-TARGET_USES_MKE2FS := true
+# CypherOS
+$(call inherit-product, vendor/aoscp/configs/common_full_phone.mk)
 
-# Graphics
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-TARGET_USES_HWC2 := true
+# Device
+$(call inherit-product, device/huawei/prague/full_prague.mk)
 
-# Partitions
-BOARD_USES_METADATA_PARTITION := true
-TARGET_COPY_OUT_VENDOR := vendor
-
-ifeq ($(TARGET_PRODUCT),aosp_prague)
-ifeq ($(BOARD_AVB_ENABLE),true)
-$(error BOARD_AVB_ENABLE cannot be set for Treble GSI)
-endif
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
-endif
-
-# Properties
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-
-# Treble
-PRODUCT_FULL_TREBLE_OVERRIDE := true
-
-# VNDK
-BOARD_VNDK_VERSION := current
-PRODUCT_EXTRA_VNDK_VERSIONS := 27
+PRODUCT_NAME := aoscp_prague
+PRODUCT_DEVICE := prague
+PRODUCT_BRAND := Huawei
+PRODUCT_MODEL := HWPRA
