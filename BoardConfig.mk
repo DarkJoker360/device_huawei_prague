@@ -100,6 +100,7 @@ endif
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
 # Recovery
 ifeq ($(TARGET_AOSP_BASED),)
