@@ -25,6 +25,8 @@
 
 #-include device/huawei/hi6250-common/BoardConfigCommon.mk
 
+include build/make/target/board/generic_arm64_a/BoardConfig.mk
+
 DEVICE_PATH := device/huawei/prague
 
 # 64 Bit
