@@ -23,7 +23,7 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
--include device/huawei/hi6250-common/BoardConfigCommon.mk
+#-include device/huawei/hi6250-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/huawei/prague
 
