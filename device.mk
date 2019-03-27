@@ -74,7 +74,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vr_hwc
 
+
 # Hardware Overlays
+ifeq ($(TARGET_PRODUCT),aosp_prague)
 PRODUCT_PACKAGES += \
     TrebleApp \
     treble-overlay-huawei \
@@ -86,7 +88,8 @@ PRODUCT_PACKAGES += \
     treble-overlay-huawei-WAS \
     treble-overlay-NavBar \
     treble-overlay-NightMode \
-    treble-overlay-SystemUI-FalseLocks \
+    treble-overlay-SystemUI-FalseLocks
+endif
 
 # NFC
 PRODUCT_PACKAGES += \
