@@ -72,8 +72,8 @@ PRODUCT_COPY_FILES += \
 
 # Graphics
 PRODUCT_PACKAGES += \
+    libion \
     vr_hwc
-
 
 # Hardware Overlays
 ifeq ($(TARGET_PRODUCT),aosp_prague)
