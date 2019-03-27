@@ -92,6 +92,12 @@ BOARD_USES_METADATA_PARTITION := true
 TARGET_COPY_OUT_VENDOR := vendor
 
 ifeq ($(TARGET_PRODUCT),aosp_prague)
+ifeq ($(BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE),)
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
+endif
+endif
+
+ifeq ($(TARGET_PRODUCT),aosp_prague)
 ifeq ($(BOARD_AVB_ENABLE),true)
 $(error BOARD_AVB_ENABLE cannot be set for Treble GSI)
 endif
