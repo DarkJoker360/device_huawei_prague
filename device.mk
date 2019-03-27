@@ -27,6 +27,7 @@ $(call inherit-product-if-exists, vendor/huawei/prague/prague-vendor.mk)
 
 # Android Open Source Project Common Stuff
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 
 PRODUCT_PACKAGES += \
