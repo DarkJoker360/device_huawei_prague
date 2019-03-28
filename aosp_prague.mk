@@ -36,3 +36,7 @@ PRODUCT_NAME := aosp_prague
 PRODUCT_DEVICE := prague
 PRODUCT_BRAND := Huawei
 PRODUCT_MODEL := HWPRA
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay/aosp \
