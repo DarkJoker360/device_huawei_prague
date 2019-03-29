@@ -23,9 +23,8 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_prague.mk \
-    $(LOCAL_DIR)/aoscp.mk \
-    $(LOCAL_DIR)/colt_prague.mk \
-    $(LOCAL_DIR)/full_prague.mk \
+# Android Open Source Project Common Stuff
+TARGET_AOSP_BASED := false
 
+# Partitions
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648

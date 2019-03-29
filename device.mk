@@ -41,8 +41,12 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 # APN
+ifeq ($(TARGET_PRODUCT),aosp_prague)
+ifeq ($(TARGET_PRODUCT),aoscp_prague)
 PRODUCT_COPY_FILES += \
     device/generic/goldfish/data/etc/apns-conf.xml:system/etc/apns-conf.xml
+endif
+endif
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
