@@ -1,0 +1,96 @@
+From 705a38891510f54025eee9e64f52c1502136f531 Mon Sep 17 00:00:00 2001
+From: hak86 <hakamelassouad@gmail.com>
+Date: Tue, 2 Apr 2019 18:09:05 +0200
+Subject: [PATCH] prague: fix boot for hi6250 do not apply
+ 0004-Enable-fallback-to-old-ro.sf.hwrotation-property.patch
+
+Change-Id: Iec2f37fdf6298f7d2e0f8d29472cbaa8f141e3a5
+---
+ libs/ui/Gralloc2.cpp                                   | 2 +-
+ services/surfaceflinger/BufferLayer.cpp                | 8 +++++++-
+ services/surfaceflinger/DisplayHardware/HWComposer.cpp | 2 +-
+ services/surfaceflinger/SurfaceFlinger.cpp             | 8 ++++++++
+ services/surfaceflinger/SurfaceFlinger.h               | 3 +++
+ 5 files changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/libs/ui/Gralloc2.cpp b/libs/ui/Gralloc2.cpp
+index 918251f9d..31d36f028 100644
+--- a/libs/ui/Gralloc2.cpp
++++ b/libs/ui/Gralloc2.cpp
+@@ -98,7 +98,7 @@ Gralloc2::Error Mapper::validateBufferDescriptorInfo(
+     if (descriptorInfo.usage & ~validUsageBits) {
+         ALOGE("buffer descriptor contains invalid usage bits 0x%" PRIx64,
+               descriptorInfo.usage & ~validUsageBits);
+-        return Error::BAD_VALUE;
++        //return Error::BAD_VALUE;
+     }
+     return Error::NONE;
+ }
+diff --git a/services/surfaceflinger/BufferLayer.cpp b/services/surfaceflinger/BufferLayer.cpp
+index 46408086d..1637e62c8 100644
+--- a/services/surfaceflinger/BufferLayer.cpp
++++ b/services/surfaceflinger/BufferLayer.cpp
+@@ -633,7 +633,13 @@ void BufferLayer::setPerFrameData(const sp<const DisplayDevice>& displayDevice)
+         visible.dump(LOG_TAG);
+     }
+ 
+-    error = hwcLayer->setSurfaceDamage(surfaceDamageRegion);
++    if(mFlinger->mDamageUsesScreenReference) {
++        const auto& frame = hwcInfo.displayFrame;
++        auto fullSource = Region(Rect(frame.left, frame.top, frame.right, frame.bottom));
++        error = hwcLayer->setSurfaceDamage(fullSource);
++    } else {
++        error = hwcLayer->setSurfaceDamage(surfaceDamageRegion);
++    }
+     if (error != HWC2::Error::None) {
+         ALOGE("[%s] Failed to set surface damage: %s (%d)", mName.string(),
+               to_string(error).c_str(), static_cast<int32_t>(error));
+diff --git a/services/surfaceflinger/DisplayHardware/HWComposer.cpp b/services/surfaceflinger/DisplayHardware/HWComposer.cpp
+index f5f7a821f..3c269ea1f 100644
+--- a/services/surfaceflinger/DisplayHardware/HWComposer.cpp
++++ b/services/surfaceflinger/DisplayHardware/HWComposer.cpp
+@@ -435,7 +435,7 @@ status_t HWComposer::prepare(DisplayDevice& displayDevice) {
+     // The check below is incorrect.  We actually rely on HWC here to fall
+     // back to validate when there is any client layer.
+     displayData.validateWasSkipped = false;
+-    if (!displayData.hasClientComposition) {
++    if ((false)) { //!displayData.hasClientComposition) {
+         sp<android::Fence> outPresentFence;
+         uint32_t state = UINT32_MAX;
+         error = hwcDisplay->presentOrValidate(&numTypes, &numRequests, &outPresentFence , &state);
+diff --git a/services/surfaceflinger/SurfaceFlinger.cpp b/services/surfaceflinger/SurfaceFlinger.cpp
+index c64aaece9..dfeabc059 100644
+--- a/services/surfaceflinger/SurfaceFlinger.cpp
++++ b/services/surfaceflinger/SurfaceFlinger.cpp
+@@ -388,6 +388,14 @@ SurfaceFlinger::SurfaceFlinger() : SurfaceFlinger(SkipInitialization) {
+         // for production purposes later on.
+         setenv("TREBLE_TESTING_OVERRIDE", "true", true);
+     }
++
++    property_get("ro.hardware", value, "");
++    if(strstr(value, "hi3660")||
++            strstr(value, "hi6250") ||
++            strstr(value, "hi3670") ||
++            strstr(value, "kirin970")) {
++        mDamageUsesScreenReference = true;
++    }
+ }
+ 
+ void SurfaceFlinger::onFirstRef()
+diff --git a/services/surfaceflinger/SurfaceFlinger.h b/services/surfaceflinger/SurfaceFlinger.h
+index 1c7cf718b..22796a535 100644
+--- a/services/surfaceflinger/SurfaceFlinger.h
++++ b/services/surfaceflinger/SurfaceFlinger.h
+@@ -856,6 +856,9 @@ private:
+     // Restrict layers to use two buffers in their bufferqueues.
+     bool mLayerTripleBufferingDisabled = false;
+ 
++    bool mDamageUsesScreenReference;
++
++
+     // these are thread safe
+     mutable std::unique_ptr<MessageQueue> mEventQueue{std::make_unique<impl::MessageQueue>()};
+     FrameTracker mAnimFrameTracker;
+-- 
+2.19.1
+
