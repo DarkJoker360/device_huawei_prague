@@ -26,7 +26,6 @@
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_prague.mk \
     $(LOCAL_DIR)/aoscp.mk \
-    $(LOCAL_DIR)/colt_prague.mk \
     $(LOCAL_DIR)/full_prague.mk \
     $(LOCAL_DIR)/lineage_prague.mk \
 

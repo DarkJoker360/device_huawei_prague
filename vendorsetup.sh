@@ -25,5 +25,4 @@
 
 add_lunch_combo aosp_prague-userdebug
 add_lunch_combo aoscp_prague-userdebug
-add_lunch_combo colt_prague-userdebug
 add_lunch_combo lineage_prague-userdebug
