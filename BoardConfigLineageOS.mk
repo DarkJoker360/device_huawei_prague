@@ -26,10 +26,6 @@
 # Android Open Source Project Common Stuff
 TARGET_AOSP_BASED := false
 
-# Lineage Hardware
-BOARD_HARDWARE_CLASS += \
-    $(DEVICE_PATH)/lineagehw
-
 # Partitions
 BOARD_AVB_ENABLE := false
 
