@@ -133,11 +133,6 @@ PRODUCT_COPY_FILES += \
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay/common \
 
-ifeq ($(TARGET_AOSP_BASED),)
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay/lineage/overlay-lineage
-endif
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \

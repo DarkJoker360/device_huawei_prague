@@ -81,13 +81,10 @@ PRODUCT_COPY_FILES += \
         $(TARGET_PREBUILT_KERNEL):kernel
 endif
 
-# Lineage Hardware
-ifeq ($(TARGET_AOSP_BASED),)
-BOARD_HARDWARE_CLASS += \
-    $(DEVICE_PATH)/lineagehw
-endif
-
 # Partitions
+ifeq ($(TARGET_PRODUCT),lineage_prague)
+BOARD_AVB_ENABLE := false
+endif
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 16777216
 BOARD_USES_METADATA_PARTITION := true

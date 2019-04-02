@@ -23,7 +23,24 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-add_lunch_combo aosp_prague-userdebug
-add_lunch_combo aoscp_prague-userdebug
-add_lunch_combo colt_prague-userdebug
-add_lunch_combo lineage_prague-userdebug
+# Android Open Source Project Common Stuff
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Board
+include device/huawei/prague/BoardConfigLineageOS.mk
+
+# LineageOS
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+# Device
+$(call inherit-product, device/huawei/prague/full_prague.mk)
+
+PRODUCT_NAME := lineage_prague
+PRODUCT_DEVICE := prague
+PRODUCT_BRAND := Huawei
+PRODUCT_MODEL := HWPRA
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay/lineage/overlay-lineage

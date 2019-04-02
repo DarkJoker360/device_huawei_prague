@@ -23,7 +23,15 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-add_lunch_combo aosp_prague-userdebug
-add_lunch_combo aoscp_prague-userdebug
-add_lunch_combo colt_prague-userdebug
-add_lunch_combo lineage_prague-userdebug
+# Android Open Source Project Common Stuff
+TARGET_AOSP_BASED := false
+
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += \
+    $(DEVICE_PATH)/lineagehw
+
+# Partitions
+BOARD_AVB_ENABLE := false
+
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
+
