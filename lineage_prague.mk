@@ -44,3 +44,7 @@ PRODUCT_MODEL := HWPRA
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay/lineage/overlay-lineage
+
+# Vendor Security Patches
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2019-03-05
