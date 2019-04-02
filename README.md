@@ -60,7 +60,7 @@ brunch prague
 ```
 # ROMs List
 - [x] AOSP 9.0
-- [x] AOSCP "CypherOS 9.0
+- [x] AOSCP "CypherOS" 9.0
 - [x] APSiP 9.0
 - [x] LineageOS 16.0
 
