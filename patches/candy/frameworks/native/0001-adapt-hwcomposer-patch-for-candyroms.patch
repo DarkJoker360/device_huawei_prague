@@ -1,0 +1,81 @@
+From cd044ef89925b38c7de5646900e46198d02537cd Mon Sep 17 00:00:00 2001
+From: hak86 <hakamelassouad@gmail.com>
+Date: Thu, 4 Apr 2019 19:57:18 +0200
+Subject: [PATCH] adapt hwcomposer patch for candyroms
+
+Change-Id: I677d9f50f4b4ef1c82c4ffb069644f93e9b287af
+---
+ services/surfaceflinger/BufferLayer.cpp                | 8 +++++++-
+ services/surfaceflinger/DisplayHardware/HWComposer.cpp | 2 +-
+ services/surfaceflinger/SurfaceFlinger.cpp             | 8 ++++++++
+ services/surfaceflinger/SurfaceFlinger.h               | 3 +++
+ 4 files changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/services/surfaceflinger/BufferLayer.cpp b/services/surfaceflinger/BufferLayer.cpp
+index fda790674..80c72d9ba 100644
+--- a/services/surfaceflinger/BufferLayer.cpp
++++ b/services/surfaceflinger/BufferLayer.cpp
+@@ -631,7 +631,13 @@ void BufferLayer::setPerFrameData(const sp<const DisplayDevice>& displayDevice)
+         visible.dump(LOG_TAG);
+     }
+ 
+-    error = hwcLayer->setSurfaceDamage(surfaceDamageRegion);
++    if(mFlinger->mDamageUsesScreenReference) {
++        const auto& frame = hwcInfo.displayFrame;
++        auto fullSource = Region(Rect(frame.left, frame.top, frame.right, frame.bottom));
++        error = hwcLayer->setSurfaceDamage(fullSource);
++    } else {
++        error = hwcLayer->setSurfaceDamage(surfaceDamageRegion);
++    }
+     if (error != HWC2::Error::None) {
+         ALOGE("[%s] Failed to set surface damage: %s (%d)", mName.string(),
+               to_string(error).c_str(), static_cast<int32_t>(error));
+diff --git a/services/surfaceflinger/DisplayHardware/HWComposer.cpp b/services/surfaceflinger/DisplayHardware/HWComposer.cpp
+index f5f7a821f..3c269ea1f 100644
+--- a/services/surfaceflinger/DisplayHardware/HWComposer.cpp
++++ b/services/surfaceflinger/DisplayHardware/HWComposer.cpp
+@@ -435,7 +435,7 @@ status_t HWComposer::prepare(DisplayDevice& displayDevice) {
+     // The check below is incorrect.  We actually rely on HWC here to fall
+     // back to validate when there is any client layer.
+     displayData.validateWasSkipped = false;
+-    if (!displayData.hasClientComposition) {
++    if ((false)) { //!displayData.hasClientComposition) {
+         sp<android::Fence> outPresentFence;
+         uint32_t state = UINT32_MAX;
+         error = hwcDisplay->presentOrValidate(&numTypes, &numRequests, &outPresentFence , &state);
+diff --git a/services/surfaceflinger/SurfaceFlinger.cpp b/services/surfaceflinger/SurfaceFlinger.cpp
+index 24b119a43..156796661 100644
+--- a/services/surfaceflinger/SurfaceFlinger.cpp
++++ b/services/surfaceflinger/SurfaceFlinger.cpp
+@@ -350,6 +350,14 @@ SurfaceFlinger::SurfaceFlinger() : SurfaceFlinger(SkipInitialization) {
+         // for production purposes later on.
+         setenv("TREBLE_TESTING_OVERRIDE", "true", true);
+     }
++
++    property_get("ro.hardware", value, "");
++    if(strstr(value, "hi3660")||
++            strstr(value, "hi6250") ||
++            strstr(value, "hi3670") ||
++            strstr(value, "kirin970")) {
++        mDamageUsesScreenReference = true;
++    }
+ }
+ 
+ void SurfaceFlinger::onFirstRef()
+diff --git a/services/surfaceflinger/SurfaceFlinger.h b/services/surfaceflinger/SurfaceFlinger.h
+index 8566b0387..9b29befe7 100644
+--- a/services/surfaceflinger/SurfaceFlinger.h
++++ b/services/surfaceflinger/SurfaceFlinger.h
+@@ -841,6 +841,9 @@ private:
+     // Restrict layers to use two buffers in their bufferqueues.
+     bool mLayerTripleBufferingDisabled = false;
+ 
++    bool mDamageUsesScreenReference;
++
++
+     // these are thread safe
+     mutable std::unique_ptr<MessageQueue> mEventQueue{std::make_unique<impl::MessageQueue>()};
+     FrameTracker mAnimFrameTracker;
+-- 
+2.19.1
+
