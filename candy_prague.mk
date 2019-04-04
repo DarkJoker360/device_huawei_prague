@@ -23,10 +23,24 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_prague.mk \
-    $(LOCAL_DIR)/aoscp.mk \
-    $(LOCAL_DIR)/candy_prague.mk \
-    $(LOCAL_DIR)/full_prague.mk \
-    $(LOCAL_DIR)/lineage_prague.mk \
+# Android Open Source Project Common Stuff
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Board
+include device/huawei/prague/BoardConfigCandy.mk
+
+# CandyROMs
+$(call inherit-product, vendor/candy/config/common_full_phone.mk)
+
+# Device
+$(call inherit-product, device/huawei/prague/full_prague.mk)
+
+PRODUCT_NAME := candy_prague
+PRODUCT_DEVICE := prague
+PRODUCT_BRAND := Huawei
+PRODUCT_MODEL := HWPRA
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay/lineage/overlay-lineage

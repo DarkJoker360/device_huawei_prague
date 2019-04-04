@@ -58,10 +58,11 @@ gedit /home/$USER/lineage/.repo/local_manifests/hi6250.xml
 lunch lineage_prague-userdebug
 brunch prague
 ```
-# ROMs List
+# ROMs List Booted
 - [x] AOSP 9.0
 - [x] AOSCP "CypherOS" 9.0
 - [x] APSiP 9.0
+- [x] CandyRoms 9.0
 - [x] LineageOS 16.0
 
 # Install Guide:
