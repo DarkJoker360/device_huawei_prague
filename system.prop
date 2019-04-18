@@ -24,6 +24,7 @@ persist.sys.radio.huawei=true
 # Sdcard
 ro.statsd.enable=false
 ro.sys.sdcardfs=1
+persist.sys.adoptable_fbe=true
 
 # Security Patches
 ro.build.version.security_patch_sys=2019-04-05
