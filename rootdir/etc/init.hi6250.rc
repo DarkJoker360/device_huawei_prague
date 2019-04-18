@@ -2,10 +2,11 @@ import /system/etc/init/connectivity/init.${ro.connectivity.chiptype}.rc
 
 on init
     mount none /system/bin/adbd /sbin/adbd bind
+    mount none /system/etc/xml/power_profile.xml /product/etc/xml/power_profile.xml bind 
     mount none /system/etc/media_codecs.xml /vendor/etc/media_codecs.xml bind
     mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
     mount none /system/usr/keylayout/fingerprint.kl /vendor/usr/keylayout/fingerprint.kl bind
-
+    
 on post-fs-data
     mkdir /data/vendor_ce 0771 root root
     mkdir /data/vendor_de 0771 root root

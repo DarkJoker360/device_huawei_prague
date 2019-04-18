@@ -58,6 +58,9 @@
 # pmom (?)
 /dev/pmom               u:object_r:pmom_device:s0
 
+# Power Profile
+/product/etc/xml/power_profile.xml    u:object_r:vendor_configs_file:s0
+
 # Secure storage
 /sec_storage(/.*)?              u:object_r:teecd_data_file:s0
 /data/sec_storage_data(/.*)?          u:object_r:teecd_data_file:s0
