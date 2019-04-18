@@ -28,3 +28,5 @@ ro.sys.sdcardfs=1
 # Security Patches
 ro.build.version.security_patch_sys=2019-04-05
 
+# Fingerprint Gestures
+sys.fpnav.enabled=1
