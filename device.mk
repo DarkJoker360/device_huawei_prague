@@ -183,3 +183,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi.hostapd@1.0 \
     android.hardware.wifi@1.2
+
+# Speed-up stuff
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.image-dex2oat-filter=verify-none
