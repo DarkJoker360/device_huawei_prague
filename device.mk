@@ -179,6 +179,7 @@ PRODUCT_COPY_FILES += \
 # Remove Packages
 PRODUCT_PACKAGES += \
     RemovePackages
+    RemovePackages2
 
 # Selinux
 PRODUCT_COPY_FILES += \
