@@ -35,7 +35,10 @@ $(call inherit-product, device/huawei/prague/full_prague.mk)
 PRODUCT_NAME := aosp_prague
 PRODUCT_DEVICE := prague
 PRODUCT_BRAND := Huawei
-PRODUCT_MODEL := HWPRA
+PRODUCT_MODEL := Huawei P8 Lite 2017
+PRODUCT_MANUFACTURER := Huawei
+
+PRODUCT_GMS_CLIENTID_BASE := android-huawei
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
