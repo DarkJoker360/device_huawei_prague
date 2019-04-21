@@ -50,4 +50,4 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Vendor Security Patches
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2019-03-05
+    ro.lineage.build.vendor_security_patch=2019-01-01
