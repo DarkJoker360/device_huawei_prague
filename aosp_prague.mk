@@ -46,3 +46,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-huawei
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay/aosp \
+
+PRODUCT_PACKAGES += \
+    Launcher3QuickStep \
+    messaging
