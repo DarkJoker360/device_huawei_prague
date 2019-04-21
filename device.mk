@@ -176,11 +176,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/releasetools/releasetools.hi6250.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/releasetools.hi6250.sh
 
-# Remove Packages
-PRODUCT_PACKAGES += \
-    RemovePackages \
-    RemovePackages2
-
 # Selinux
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sepolicy/26.0.cil:$(TARGET_COPY_OUT_SYSTEM)/etc/selinux/mapping/26.0.cil \
