@@ -85,22 +85,6 @@ PRODUCT_PACKAGES += \
     libion \
     vr_hwc
 
-# Hardware Overlays
-ifeq ($(TARGET_PRODUCT),aosp_prague)
-PRODUCT_PACKAGES += \
-    TrebleApp \
-    treble-overlay-huawei \
-    treble-overlay-huawei-ANE \
-    treble-overlay-huawei-BND \
-    treble-overlay-huawei-LLD \
-    treble-overlay-huawei-PRA \
-    treble-overlay-huawei-RNE \
-    treble-overlay-huawei-WAS \
-    treble-overlay-NavBar \
-    treble-overlay-NightMode \
-    treble-overlay-SystemUI-FalseLocks
-endif
-
 # HIDL
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/compatibility_matrix.xml:system/compatibility_matrix.xml
