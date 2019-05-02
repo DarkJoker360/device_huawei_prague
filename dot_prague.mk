@@ -47,3 +47,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-huawei
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay/lineage/overlay-lineage
+
+# Official Build
+DOT_OFFICIAL=true
