@@ -9,6 +9,10 @@ ro.config.vc_call_vol_steps=7
 # ADB
 ro.adb.secure=1
 
+# BT
+persist.sys.bt.unsupport.states=000000000000000000000011111
+persist.sys.bt.unsupport.features=00000001
+
 # Camera
 persist.sys.camera.huawei=true
 
