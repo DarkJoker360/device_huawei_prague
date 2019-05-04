@@ -36,6 +36,11 @@ repo sync --no-tags
 ```
 
 * Apply GSI Patches from https://github.com/phhusson/treble_patches nor https://github.com/Dil3mm4/treble_patches for our DSSI .
+* Or use the script located in patches
+```. patches.sh```
+Choose the rom u want to build
+EX: Aosp 1, DotOS 3, Etc...
+
 * Create the manifest to download my own sources.
 ```bash
 mkdir /home/$USER/lineage/.repo/local_manifests
