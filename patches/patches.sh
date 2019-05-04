@@ -3,7 +3,7 @@
 # ROM patching script for P8 Lite 2017 (prague)
 #
 # Copyright (C) 2019 DarkJoker360<simoespo159@gmail.com>
-# 
+#
 # This program is free software: you can REDistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -23,81 +23,76 @@ DEFAULT_URL="https://raw.githubusercontent.com/DarkJoker360/prague_patches/andro
 echo "Which rom are you building?"
 select yn in "AOSP" "CandyRoms" "DotOS" "LineageOS"; do
     case $yn in
-        
 		AOSP )cd packages/apps/Settings
                    echo "Patching packages/apps/Settings..."
                    wget $DEFAULT_URL/platform_packages_apps_Settings/0001-Act-as-usb-device-when-there-is-no-hal-but-we-believ.patch
                    patch -p1< 0001-Act-as-usb-device-when-there-is-no-hal-but-we-believ.patch
                    echo " "
                    cd ../../..
-		           cd system/sepolicy
-				   echo "Patching system/sepolicy..."
-				   wget $DEFAULT_URL/platform_system_sepolicy/%5BPATCH%5D-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
-		           patch -p1< [PATCH]-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
+		   cd system/sepolicy
+	           echo "Patching system/sepolicy..."
+	           wget $DEFAULT_URL/platform_system_sepolicy/%5BPATCH%5D-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
+		   patch -p1< [PATCH]-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
                    cd ../..
-				   cd frameworks/native
+	           cd frameworks/native
                    echo "Patching frameworks/native..."
                    wget $DEFAULT_URL/platform_frameworks_native/0001-AOSP-8.0-8.1-didn-t-use-presentOrValidate-so-it-s-br.patch
                    wget $DEFAULT_URL/platform_frameworks_native/0002-Ignore-usage-bits-verification.patch
                    wget $DEFAULT_URL/platform_frameworks_native/0003-device-Huawei-HWC-doesn-t-understand-0-0-0-0-fullscr.patch
                    wget $DEFAULT_URL/platform_frameworks_native/0004-Enable-fallback-to-old-ro.sf.hwrotation-property.patch
-				   cd ../..
-				   
-				   break;;
-		
+	           cd ../..
+	           break;;
+
 		CandyRoms )cd packages/apps/Settings
                    echo "Patching packages/apps/Settings..."
                    wget $DEFAULT_URL/platform_packages_apps_Settings/0001-Act-as-usb-device-when-there-is-no-hal-but-we-believ.patch
                    patch -p1< 0001-Act-as-usb-device-when-there-is-no-hal-but-we-believ.patch
                    echo " "
                    cd ../../..
-				   cd system/sepolicy
-				   echo "Patching system/sepolicy..."
-				   wget $DEFAULT_URL/platform_system_sepolicy/%5BPATCH%5D-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
-		           patch -p1< [PATCH]-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
+		   cd system/sepolicy
+		   echo "Patching system/sepolicy..."
+                   wget $DEFAULT_URL/platform_system_sepolicy/%5BPATCH%5D-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
+		   patch -p1< [PATCH]-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
                    cd ../..
-				   cd frameworks/native
-				   echo "Patching frameworks/native..."
+		   cd frameworks/native
+		   echo "Patching frameworks/native..."
                    wget $DEFAULT_URL/candy_frameworks_native/0001-adapt-hwcomposer-patch-for-candyroms.patch
-				   echo " "
+		   echo " "
                    patch -p1< 0001-adapt-hwcomposer-patch-for-candyroms.patch
-                   cd ../..
-		
-            	   break;;
-		
-		DotOS )    cd build
-		           echo "Patching build..."
-				   wget $DEFAULT_URL/platform_build/0001-disable-system-as-root-for-emui8.patch
-				   echo " "
-				   patch -p1< 0001-disable-system-as-root-for-emui8.patch
                    cd ..
-				   cd frameworks/native
+            	   break;;
+
+		DotOS )cd build
+		   echo "Patching build..."
+                   wget $DEFAULT_URL/platform_build/0001-disable-system-as-root-for-emui8.patch
+                   echo " "
+		   patch -p1< 0001-disable-system-as-root-for-emui8.patch
+                   cd ..
+	           cd frameworks/native
                    echo "Patching frameworks/native..."
                    wget $DEFAULT_URL/platform_frameworks_native/0001-AOSP-8.0-8.1-didn-t-use-presentOrValidate-so-it-s-br.patch
                    wget $DEFAULT_URL/platform_frameworks_native/0002-Ignore-usage-bits-verification.patch
                    wget $DEFAULT_URL/platform_frameworks_native/0003-device-Huawei-HWC-doesn-t-understand-0-0-0-0-fullscr.patch
                    wget $DEFAULT_URL/platform_frameworks_native/0004-Enable-fallback-to-old-ro.sf.hwrotation-property.patch
-				   cd ../..
-				   
-				   break;;
-				   
-		LineageOS )cd packages/apps/Settings
+		   cd ../..
+                   break;;
+
+                LineageOS )cd packages/apps/Settings
                    echo "Patching packages/apps/Settings..."
                    wget $DEFAULT_URL/platform_packages_apps_Settings/0001-Act-as-usb-device-when-there-is-no-hal-but-we-believ.patch
                    patch -p1< 0001-Act-as-usb-device-when-there-is-no-hal-but-we-believ.patch
                    echo " "
                    cd ../../..
-				   cd system/sepolicy
-				   echo "Patching system/sepolicy..."
-				   wget $DEFAULT_URL/platform_system_sepolicy/%5BPATCH%5D-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
-		           patch -p1< [PATCH]-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
+		   cd system/sepolicy
+		   echo "Patching system/sepolicy..."
+		   wget $DEFAULT_URL/platform_system_sepolicy/%5BPATCH%5D-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
+		   patch -p1< [PATCH]-Allow-hal_usb-access-sysfs-when-in-coredomain.patch
                    cd ../..
-				   cd frameworks/native
-				   echo "Patching frameworks/native..."
+	           cd frameworks/native
+		   echo "Patching frameworks/native..."
                    wget $DEFAULT_URL/lineage_frameworks_native/0001-prague-fix-boot-for-hi6250.patch
                    patch -p1< 0001-prague-fix-boot-for-hi6250.patch
                    cd ../..
-		
             	   break;;
     esac
 done
@@ -196,7 +191,7 @@ patch -p1< 0002-Some-kernel-crashes-when-using-too-recent-sdcardfs-o.patch
 patch -p1< 0003-First-drop_privs-which-may-fail-and-only-run-thread-.patch
 cd ..
 
-cd netd 
+cd netd
 echo "Patching system/netd..."
 wget $DEFAULT_URL/platform_system_netd/0001-device-Huawei-Kirin-960-accept-broken-rpfilter-match.patch
 echo " "
