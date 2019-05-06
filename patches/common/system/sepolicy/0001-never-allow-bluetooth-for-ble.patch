@@ -1,0 +1,40 @@
+From 23e7242eaa51daef60ec99ad4b1c4b67dc6372fc Mon Sep 17 00:00:00 2001
+From: hak86 <hakamelassouad@gmail.com>
+Date: Mon, 6 May 2019 15:54:07 +0200
+Subject: [PATCH] never allow bluetooth for ble
+
+Change-Id: I50d84b52aca96ea61c99deaee6ce399e59021bb5
+---
+ prebuilts/api/28.0/public/netd.te | 2 +-
+ public/netd.te                    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/prebuilts/api/28.0/public/netd.te b/prebuilts/api/28.0/public/netd.te
+index 18113e75..d5422b3c 100644
+--- a/prebuilts/api/28.0/public/netd.te
++++ b/prebuilts/api/28.0/public/netd.te
+@@ -130,7 +130,7 @@ neverallow netd system_file:dir_file_class_set write;
+ neverallow netd { app_data_file system_data_file }:dir_file_class_set write;
+ 
+ # only system_server and dumpstate may find netd service
+-neverallow { domain -system_server -dumpstate -netd } netd_service:service_manager find;
++neverallow { domain -system_server -dumpstate -netd -bluetooth } netd_service:service_manager find;
+ 
+ # only netd can create the bpf maps
+ neverallow { domain -netd } netd:bpf { map_create };
+diff --git a/public/netd.te b/public/netd.te
+index 18113e75..d5422b3c 100644
+--- a/public/netd.te
++++ b/public/netd.te
+@@ -130,7 +130,7 @@ neverallow netd system_file:dir_file_class_set write;
+ neverallow netd { app_data_file system_data_file }:dir_file_class_set write;
+ 
+ # only system_server and dumpstate may find netd service
+-neverallow { domain -system_server -dumpstate -netd } netd_service:service_manager find;
++neverallow { domain -system_server -dumpstate -netd -bluetooth } netd_service:service_manager find;
+ 
+ # only netd can create the bpf maps
+ neverallow { domain -netd } netd:bpf { map_create };
+-- 
+2.19.1
+
