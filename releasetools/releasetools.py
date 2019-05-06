@@ -35,3 +35,8 @@ def FullOTA_PostValidate(info):
     info.script.AppendExtra('run_program("/sbin/e2fsck", "-fy", "/dev/block/bootdevice/by-name/system");');
     info.script.AppendExtra('run_program("/tmp/install/bin/resize2fs_static", "/dev/block/bootdevice/by-name/system");');
     info.script.AppendExtra('run_program("/sbin/e2fsck", "-fy", "/dev/block/bootdevice/by-name/system");');
+
+def FullOTA_InstallBegin(info):
+  info.script.AppendExtra('ui_print("                                                   ");');
+  info.script.AppendExtra('ui_print(" This rom is made by Simone Esposito (DarkJoker360)");');
+  info.script.AppendExtra('ui_print("                                                   ");');
