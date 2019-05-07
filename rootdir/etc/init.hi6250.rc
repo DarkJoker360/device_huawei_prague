@@ -7,6 +7,9 @@ on init
     mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
     mount none /system/usr/keylayout/fingerprint.kl /vendor/usr/keylayout/fingerprint.kl bind
     
+on post-fs
+    start huawei_hwc
+
 on post-fs-data
     mkdir /data/vendor_ce 0771 root root
     mkdir /data/vendor_de 0771 root root
@@ -34,6 +37,11 @@ service dpeservice-1.1 /system/bin/displayengineserver@1.1
     class main
     user graphics
     group graphics system sdcard_rw
+    disabled
+
+service huawei_hwc /system/bin/huawei_hwc.sh
+    oneshot
+    seclabel u:r:su:s0
     disabled
 
 service wifi_ext /system/bin/hw/android.hardware.wifi@1.0-service

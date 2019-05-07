@@ -25,9 +25,10 @@
 
 #-include device/huawei/hi6250-common/BoardConfigCommon.mk
 
-include build/make/target/board/generic_arm64_a/BoardConfig.mk
-
 DEVICE_PATH := device/huawei/prague
+
+include build/make/target/board/generic_arm64_a/BoardConfig.mk
+include $DEVICE_PATH/huawei_hwc/huawei_hwc.mk
 
 # 64 Bit
 TARGET_USES_64_BIT_BINDER := true
@@ -76,6 +77,7 @@ TARGET_USES_MKE2FS := true
 # Graphics
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_USES_HWC2 := true
+TARGET_FS_CONFIG_GEN += $DEVICE_PATH/huawei_hwc/huawei_hwc.fs
 
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image
