@@ -32,6 +32,7 @@ include device/huawei/prague/BoardConfigDotOS.mk
 
 # DotOS
 $(call inherit-product, vendor/dot/config/common.mk)
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Device
 $(call inherit-product, device/huawei/prague/full_prague.mk)
