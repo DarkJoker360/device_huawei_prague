@@ -47,3 +47,6 @@ video.accelerate.hw=1
 
 # Always generate dex pre-opt in system image
 ro.cp_system_other_odex=0
+
+# Fingerprint Gestures
+sys.fpnav.enabled=1

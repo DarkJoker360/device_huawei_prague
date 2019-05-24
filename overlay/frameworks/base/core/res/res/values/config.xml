@@ -104,6 +104,16 @@
          turned off and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOffByDefault">true</bool>
 
+    <!-- FP Keys -->
+    <bool name="config_showNavigationBar">true</bool>
+    <bool name="config_supportSystemNavigationKeys">true</bool>
+
+    <!-- Indicate whether the lid state impacts the accessibility of
+    the navigation buttons.  0 means it doesn't, 1 means it is accessible
+    when the lid is open, 2 means it is accessible when the lid is
+    closed.  The default is 0. -->
+    <integer name="config_lidNavigationAccessibility">1</integer>
+
     <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state.
          When false, autosuspend_disable() will be called before the display is turned on
