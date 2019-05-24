@@ -54,8 +54,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/usb_audio_policy_configuration.xml
 
 # Charger
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/product/etc/xml/power_profile.xml:$(TARGET_COPY_OUT_SYSTEM)/product/etc/xml/power_profile.xml
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/rootdir/product/etc/xml/power_profile.xml:$(TARGET_COPY_OUT_SYSTEM)/product/etc/xml/power_profile.xml
 
 # Device Ramdisk
 PRODUCT_PACKAGES += \
