@@ -1,0 +1,22 @@
+# Audio
+audio.deep_buffer.media=true
+ro.config.media_vol_steps=25
+ro.config.vc_call_vol_steps=7
+
+# ADB
+ro.adb.secure=1
+
+# Camera
+persist.sys.camera.huawei=true
+
+# Perf
+ro.vendor.qti.sys.fw.bg_apps_limit=60
+
+# RIL
+persist.sys.radio.huawei=true
+
+# Security Patches
+ro.build.version.security_patch_sys=2019-05-05
+
+# Statsd
+ro.statsd.enable=false
