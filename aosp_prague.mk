@@ -30,6 +30,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Device
 $(call inherit-product, device/huawei/prague/full_prague.mk)
 
+# Inherit DarkJoker360's Vendor
+$(call inherit-product-if-exists, vendor/DarkJoker360/DarkJoker360.mk)
+
 PRODUCT_NAME := aosp_prague
 PRODUCT_DEVICE := prague
 PRODUCT_BRAND := Huawei
