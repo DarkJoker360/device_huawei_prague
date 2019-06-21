@@ -31,7 +31,7 @@ ro.sys.sdcardfs=1
 persist.sys.adoptable_fbe=true
 
 # Security Patches
-ro.build.version.security_patch_sys=2019-05-05
+ro.build.version.security_patch_sys=2019-06-05
 
 # Fingerprint Gestures
 sys.fpnav.enabled=1
