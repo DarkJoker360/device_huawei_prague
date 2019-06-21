@@ -8,4 +8,6 @@ elif [[ -e vendor/aoscp ]]; then
 add_lunch_combo aoscp_prague-userdebug
 elif [[ -e vendor/candy ]]; then
 add_lunch_combo candy_prague-userdebug
+elif [[ -e vendor/potato ]]; then
+add_lunch_combo potato_prague-userdebug
 fi
