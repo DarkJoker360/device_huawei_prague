@@ -1,5 +1,10 @@
 # Audio
-/system/etc/usb_audio_policy_configuration.xml    u:object_r:vendor_configs_file:s0
+/system/etc/audio_policy_configuration.xml	     u:object_r:vendor_configs_file:s0
+/system/etc/audio_policy_volumes_drc.xml             u:object_r:vendor_configs_file:s0
+/system/etc/default_volume_tables.xml		     u:object_r:vendor_configs_file:s0
+/system/etc/r_submix_audio_policy_configuration.xml  u:object_r:vendor_configs_file:s0
+/system/etc/a2dp_audio_policy_configuration.xml      u:object_r:vendor_configs_file:s0
+/system/etc/usb_audio_policy_configuration.xml       u:object_r:vendor_configs_file:s0
 
 # bfm
 /dev/hw_bfm             u:object_r:bfmr_device:s0

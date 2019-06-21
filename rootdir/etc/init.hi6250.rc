@@ -3,6 +3,11 @@ import /system/etc/init/connectivity/init.${ro.connectivity.chiptype}.rc
 on init
     mount none /system/bin/adbd /sbin/adbd bind
     mount none /system/etc/xml/power_profile.xml /product/etc/xml/power_profile.xml bind 
+    mount none /system/etc/audio_policy.conf /vendor/etc/audio_policy.conf bind
+    mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio_policy_configuration.xml bind
+    mount none /system/etc/audio_policy_volumes_drc.xml /vendor/etc/audio_policy_volumes_drc.xml bind
+    mount none /system/etc/default_volume_tables.xml /vendor/etc/default_volume_tables.xml bind
+    mount none /system/etc/r_submix_audio_policy_configuration.xml /vendor/etc/r_submix_audio_policy_configuration.xml bind
     mount none /system/etc/media_codecs.xml /vendor/etc/media_codecs.xml bind
     mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
     mount none /system/usr/keylayout/fingerprint.kl /vendor/usr/keylayout/fingerprint.kl bind
