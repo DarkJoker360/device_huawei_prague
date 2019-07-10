@@ -24,6 +24,6 @@
 # components.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_prague.mk \
+    $(LOCAL_DIR)/dot_prague.mk \
     $(LOCAL_DIR)/full_prague.mk \
 

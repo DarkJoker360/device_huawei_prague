@@ -30,10 +30,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Device
 $(call inherit-product, device/huawei/prague/full_prague.mk)
 
-# Inherit DarkJoker360's Vendor
-$(call inherit-product-if-exists, vendor/DarkJoker360/DarkJoker360.mk)
+# Inherit some common DotOS stuff.
+$(call inherit-product, vendor/dot/config/common.mk)
+TARGET_BOOT_ANIMATION_RES := 1080
 
-PRODUCT_NAME := aosp_prague
+PRODUCT_NAME := dot_prague
 PRODUCT_DEVICE := prague
 PRODUCT_BRAND := Huawei
 PRODUCT_MODEL := Huawei P8 Lite 2017

@@ -1,1 +1,1 @@
-add_lunch_combo aosp_prague-userdebug
+add_lunch_combo dot_prague-userdebug
