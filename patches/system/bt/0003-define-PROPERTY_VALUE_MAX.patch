@@ -1,0 +1,25 @@
+From 7b3098fe4b17d6018721b289b6387c841fd7f4dc Mon Sep 17 00:00:00 2001
+From: DarkJoker360 <simoespo159@gmail.com>
+Date: Sat, 4 May 2019 16:59:49 +0200
+Subject: [PATCH] define PROPERTY_VALUE_MAX
+
+This is needed since we are building DSSI.
+
+Signed-off-by: DarkJoker360 <simoespo159@gmail.com>
+---
+ hci/src/hci_packet_parser.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hci/src/hci_packet_parser.cc b/hci/src/hci_packet_parser.cc
+index 9b7dc16b4..b50dbc3e3 100644
+--- a/hci/src/hci_packet_parser.cc
++++ b/hci/src/hci_packet_parser.cc
+@@ -29,6 +29,8 @@
+ 
+ #include <cutils/properties.h>
+ 
++#define PROPERTY_VALUE_MAX 92
++
+ static const command_opcode_t NO_OPCODE_CHECKING = 0;
+ 
+ static const allocator_t* buffer_allocator;

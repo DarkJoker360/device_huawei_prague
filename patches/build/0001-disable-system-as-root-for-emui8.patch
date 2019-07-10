@@ -1,0 +1,37 @@
+From 241e8252b277a03473cd9265615fc29d2cad3bcd Mon Sep 17 00:00:00 2001
+From: hak86 <hakamelassouad@gmail.com>
+Date: Wed, 27 Mar 2019 18:06:50 +0100
+Subject: [PATCH] disable system-as-root for emui8
+
+Change-Id: I7f21eba1b333c53939fcd9967cb8a2f08b02fea4
+---
+ target/board/treble_common.mk | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/target/board/treble_common.mk b/target/board/treble_common.mk
+index 9b8784edf..a0f165f46 100644
+--- a/target/board/treble_common.mk
++++ b/target/board/treble_common.mk
+@@ -61,12 +61,12 @@ USE_XML_AUDIO_POLICY_CONF := 1
+ # To disable AVB for GSI, use the vbmeta.img and the GSI together.
+ # To enable AVB for GSI, include the GSI public key into the device-specific
+ # vbmeta.img.
+-BOARD_AVB_ENABLE := true
+-BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
++BOARD_AVB_ENABLE := false
++#BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
++#BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
+ 
+ # Enable chain partition for system.
+-BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
+-BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
+-BOARD_AVB_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+-BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
++#BOARD_AVB_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
++#BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
++#BOARD_AVB_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
++#BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+-- 
+2.19.1
+

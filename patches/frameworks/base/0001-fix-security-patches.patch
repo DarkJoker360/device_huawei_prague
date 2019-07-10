@@ -1,0 +1,26 @@
+From 47697f60c0ea1c193e1b78f615f2a17eb01c15e2 Mon Sep 17 00:00:00 2001
+From: hak86 <hakamelassouad@gmail.com>
+Date: Sun, 24 Mar 2019 19:33:12 +0100
+Subject: [PATCH] fix security patches
+
+Change-Id: Ie57c1c40485355b34c0309fc52a55783ae1776d1
+---
+ core/java/android/os/Build.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/java/android/os/Build.java b/core/java/android/os/Build.java
+index de25fd214d4..c384d96e4cc 100644
+--- a/core/java/android/os/Build.java
++++ b/core/java/android/os/Build.java
+@@ -210,7 +210,7 @@ public class Build {
+          * The user-visible security patch level.
+          */
+         public static final String SECURITY_PATCH = SystemProperties.get(
+-                "ro.build.version.security_patch", "");
++                "ro.build.version.security_patch_sys", "");
+ 
+         /**
+          * The user-visible SDK version of the framework in its raw String
+-- 
+2.19.1
+
