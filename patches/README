@@ -1,0 +1,5 @@
+How to apply patches
+
+cd WORKING_DIR
+sh device/huawei/prague/patches/apply-patches.sh
+sh device/huawei/prague/patches/remove-patches.sh
